@@ -306,7 +306,7 @@
         position: relative;
         width: 100%;
         min-height: 350px;
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        background: var(--primary-dark);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -315,21 +315,6 @@
         overflow: hidden;
         padding: var(--spacing-xl);
         text-align: center;
-        box-shadow: var(--shadow-md);
-    }
-
-    /* Decoration Circle */
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -20%;
-        width: 80%;
-        height: 200%;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 50%;
-        transform: rotate(25deg);
-        pointer-events: none;
     }
 
     .hero-logo {
