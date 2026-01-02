@@ -1,0 +1,972 @@
+    /* =================== CSS VARIABLES =================== */
+    :root {
+        /* Palette */
+        --primary-color: #D32F2F;
+        /* Righter, more vibrant red */
+        --primary-dark: #b71c1c;
+        --primary-light: #ffcdd2;
+
+        --secondary-color: #fafafa;
+        --surface-color: #ffffff;
+
+        --text-main: #212121;
+        --text-secondary: #757575;
+        --text-light: #9e9e9e;
+
+        --white: #ffffff;
+        --black: #000000;
+
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --accent-color: #FF5722;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+        --whatsapp-green: #25D366;
+        --whatsapp-green-dark: #128C7E;
+
+        --sticky-height: 60px;
+        /* Slight increase for better touch targets */
+
+        /* Typography */
+        --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
+        --font-size-xs: 0.75rem;
+        /* 12px */
+        --font-size-sm: 0.875rem;
+        /* 14px */
+        --font-size-base: 1rem;
+        /* 16px */
+        --font-size-lg: 1.125rem;
+        /* 18px */
+        --font-size-xl: 1.5rem;
+        /* 24px */
+        --font-size-2xl: 2.25rem;
+        /* 36px */
+        --font-size-3xl: 3rem;
+        /* 48px */
+
+        /* Spacing */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+
+        /* Border Radius */
+        --radius-sm: 0.375rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --radius-full: 9999px;
+
+        /* Transitions */
+        --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+        /* Z-Index */
+        --z-navbar: 100;
+        --z-button: 200;
+        --z-popup-backdrop: 900;
+        --z-popup: 950;
+        --z-loader: 1000;
+    }
+
+    /* =================== ANIMATIONS =================== */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -1000px 0;
+        }
+
+        100% {
+            background-position: 1000px 0;
+        }
+    }
+
+    @keyframes slideUpFade {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes bump {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* 1. Pulse Wave */
+    @keyframes wa-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+
+        70% {
+            box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+    }
+
+    /* 2. Wobble Attention */
+    @keyframes wa-wobble {
+
+        0%,
+        90%,
+        100% {
+            transform: scale(1) rotate(0);
+        }
+
+        92% {
+            transform: scale(1.1) rotate(-8deg);
+        }
+
+        94% {
+            transform: scale(1.1) rotate(8deg);
+        }
+
+        96% {
+            transform: scale(1.1) rotate(-8deg);
+        }
+
+        98% {
+            transform: scale(1.1) rotate(8deg);
+        }
+    }
+
+    /* 3. Icon Float */
+    @keyframes icon-float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-3px);
+        }
+    }
+
+    /* Scroll Reveal Utility */
+    .reveal-item {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal-item.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .cart-bump {
+        animation: bump 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+
+    /* =================== GENERAL =================== */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--font-primary);
+        background-color: var(--secondary-color);
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding-bottom: calc(100px + env(safe-area-inset-bottom));
+        /* Space for FAB + Safe Area */
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #bbb;
+    }
+
+    /* =================== LOADER =================== */
+    #loader {
+        position: fixed;
+        inset: 0;
+        background: var(--white);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-md);
+        z-index: var(--z-loader);
+    }
+
+    .logo-loader {
+        width: 8rem;
+        height: 8rem;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-loader img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+        animation: fadeIn 1.2s ease-in-out forwards;
+    }
+
+    .logo-loader .pulse {
+        position: absolute;
+        inset: -5px;
+        border-radius: 50%;
+        border: 3px solid var(--primary-color);
+        opacity: 0;
+        animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: scale(1.5);
+            /* Halkanın dışa doğru büyümesi için */
+            opacity: 0;
+        }
+    }
+
+    /* =================== HERO =================== */
+    .hero {
+        position: relative;
+        width: 100%;
+        min-height: 350px;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        overflow: hidden;
+        padding: var(--spacing-xl);
+        text-align: center;
+        box-shadow: var(--shadow-md);
+    }
+
+    /* Decoration Circle */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -20%;
+        width: 80%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        transform: rotate(25deg);
+        pointer-events: none;
+    }
+
+    .hero-logo {
+        width: 100px;
+        height: 100px;
+        border-radius: var(--radius-full);
+        background: var(--surface-color);
+        padding: 4px;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: var(--spacing-md);
+        overflow: hidden;
+        animation: fadeIn 0.8s ease-out;
+    }
+
+    .hero-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        animation: fadeIn 0.8s ease-out 0.2s backwards;
+    }
+
+    .hero-title {
+        font-size: var(--font-size-2xl);
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+        margin-top: var(--spacing-xs);
+        opacity: 0.9;
+        font-weight: 300;
+    }
+
+    .hero-socials {
+        margin-top: var(--spacing-lg);
+        display: flex;
+        gap: var(--spacing-md);
+        z-index: 10;
+        animation: fadeIn 0.8s ease-out 0.4s backwards;
+    }
+
+    .hero-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-full);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(5px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-base);
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1.2rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @media (hover: hover) {
+        .hero-icon:hover {
+            background: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .hero-icon:active {
+        transform: scale(0.95);
+        background: var(--white);
+        color: var(--primary-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-icon .fab,
+    .hero-icon .fas {
+        transition: color 0.2s;
+    }
+
+    /* Remove old logo positioning */
+    .hero-logo-left {
+        display: none;
+    }
+
+    /* =================== NAVBAR =================== */
+    #category-navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        display: flex;
+        overflow-x: auto;
+        padding: var(--spacing-sm) var(--spacing-md);
+        gap: var(--spacing-sm);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        z-index: var(--z-navbar);
+        scrollbar-width: none;
+        box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+
+    #category-navbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-btn {
+        text-decoration: none;
+        color: var(--text-secondary);
+        border: 1px solid transparent;
+        background: transparent;
+        padding: 0.6rem 1.2rem;
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        white-space: nowrap;
+        font-weight: 500;
+        font-size: var(--font-size-sm);
+        transition: var(--transition-base);
+    }
+
+    @media (hover: hover) {
+        .category-btn:hover {
+            background: var(--bg-lighter);
+            color: var(--primary-color);
+        }
+    }
+
+    .category-btn.active {
+        background: var(--primary-color);
+        color: var(--white);
+        box-shadow: var(--shadow-sm);
+        transform: translateY(-1px);
+    }
+
+    .category-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* =================== PRODUCT SECTION =================== */
+    #product-container {
+        padding: var(--spacing-xl) var(--spacing-md);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .category-section h2 {
+        font-size: var(--font-size-xl);
+        color: var(--text-main);
+        margin-bottom: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
+        padding-bottom: var(--spacing-xs);
+        border-bottom: 2px solid var(--primary-light);
+        display: inline-block;
+    }
+
+    /* =================== PRODUCT CARD =================== */
+    .product-card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: var(--surface-color);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        margin-bottom: var(--spacing-md);
+        transition: var(--transition-base);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        overflow: hidden;
+    }
+
+    .product-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-4px);
+    }
+
+    .product-card img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: var(--radius-md);
+        flex-shrink: 0;
+        background-color: #f0f0f0;
+    }
+
+    .product-info {
+        flex: 1;
+        margin-left: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .product-info h3 {
+        margin: 0 0 var(--spacing-xs) 0;
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    .product-info p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: var(--font-size-sm);
+        line-height: 1.5;
+    }
+
+    .product-info p.price {
+        margin-top: var(--spacing-sm);
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: var(--font-size-base);
+    }
+
+    /* =================== COUNT CONTROL =================== */
+    .countContainer {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        background: #f1f3f4;
+        border-radius: var(--radius-full);
+        padding: 4px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .countContainer button {
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--text-main);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: var(--transition-fast);
+        box-shadow: var(--shadow-sm);
+    }
+
+    @media (hover: hover) {
+        .countContainer button:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+    }
+
+    .countContainer button:active {
+        transform: scale(0.9);
+    }
+
+    .countContainer span.count {
+        min-width: 30px;
+        text-align: center;
+        font-weight: 600;
+        font-size: var(--font-size-base);
+    }
+
+    /* =================== WHATSAPP BUTTON =================== */
+    /* =================== WHATSAPP BUTTON =================== */
+    .whatsapp-btn {
+        position: fixed;
+        bottom: calc(var(--spacing-xl) + env(safe-area-inset-bottom));
+        right: var(--spacing-xl);
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: none;
+        background-color: var(--whatsapp-green);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: var(--z-button);
+        transition: var(--transition-bounce);
+
+        /* User Animations */
+        animation: wa-pulse 2s infinite, wa-wobble 5s infinite;
+    }
+
+    @media (hover: hover) {
+        .whatsapp-btn:hover {
+            /* Stop animation on hover for easier clicking */
+            animation: none;
+            transform: scale(1.15);
+            filter: brightness(1.1);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    .whatsapp-btn:active {
+        transform: scale(0.95);
+    }
+
+    .whatsapp-btn .fab {
+        font-size: 32px;
+        color: white;
+        animation: icon-float 3s infinite ease-in-out;
+    }
+
+    /* =================== LIGHTBOX =================== */
+    #lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        z-index: 99999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        cursor: zoom-out;
+    }
+
+    #lightbox.active {
+        opacity: 1;
+    }
+
+    #lightbox img {
+        max-width: 90%;
+        max-height: 90vh;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        transform: scale(0.9);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    #lightbox.active img {
+        transform: scale(1);
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-base);
+    }
+
+    .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(90deg);
+    }
+
+    /* Message count badge on button */
+    .whatsapp-btn::after {
+        content: attr(data-count);
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: var(--primary-color);
+        color: var(--white);
+        font-size: 0.8rem;
+        font-weight: bold;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--white);
+        opacity: 0;
+        transform: scale(0);
+        transition: var(--transition-bounce);
+    }
+
+    .whatsapp-btn[data-count]:not([data-count="0"])::after {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* =================== ORDER POPUP =================== */
+    .order-popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: var(--z-popup);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .order-popup.open {
+        opacity: 1;
+    }
+
+    .order-content {
+        background: var(--surface-color);
+        border-radius: var(--radius-xl);
+        width: 90%;
+        max-width: 500px;
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-xl);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .order-popup.open .order-content {
+        transform: scale(1);
+    }
+
+    .popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid var(--bg-lighter);
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .popup-header h2 {
+        margin: 0;
+        font-size: var(--font-size-xl);
+        color: var(--text-main);
+    }
+
+    .close-popup {
+        width: 44px;
+        /* Larger touch target */
+        height: 44px;
+        border-radius: 50%;
+        background: var(--bg-lighter);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: var(--transition-fast);
+        color: var(--text-secondary);
+    }
+
+    @media (hover: hover) {
+        .close-popup:hover {
+            background: var(--primary-light);
+            color: var(--primary-color);
+        }
+    }
+
+    .close-popup:active {
+        transform: scale(0.9);
+        background: #e0e0e0;
+    }
+
+    .order-items {
+        max-height: 40vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        padding-right: var(--spacing-xs);
+    }
+
+    .order-items div {
+        display: flex;
+        justify-content: space-between;
+        padding: var(--spacing-sm);
+        background: var(--bg-lighter);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-sm);
+    }
+
+    .order-items span:first-child {
+        font-weight: 500;
+    }
+
+    .order-total {
+        font-weight: 700;
+        font-size: var(--font-size-lg);
+        text-align: right;
+        color: var(--primary-color);
+        padding-top: var(--spacing-sm);
+        border-top: 2px solid var(--bg-lighter);
+    }
+
+    .popup-send-btn {
+        background: linear-gradient(135deg, var(--whatsapp-green), var(--whatsapp-green-dark));
+        color: var(--white);
+        border: none;
+        padding: var(--spacing-md);
+        font-size: var(--font-size-md);
+        font-weight: 600;
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        transition: var(--transition-base);
+        box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    }
+
+    @media (hover: hover) {
+        .popup-send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+        }
+    }
+
+    .popup-send-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* =================== RESPONSIVE =================== */
+    @media (max-width: 768px) {
+        .hero {
+            min-height: 280px;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .hero-logo-left {
+            display: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero {
+            min-height: auto;
+            padding: 80px 20px 40px 20px;
+            /* More top padding for status bar/browser UI breathing room */
+            justify-content: flex-start;
+            /* Let content stack naturally */
+            gap: var(--spacing-lg);
+        }
+
+        .hero-content {
+            margin-top: 0;
+            /* Reset margins as we use flex gap */
+            width: 100%;
+            animation: slideUpFade 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            /* Center it */
+            position: static;
+            /* Remove absolute positioning */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-title {
+            font-size: 1.75rem;
+            /* Slightly smaller for better fitting */
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            margin-top: var(--spacing-sm);
+            opacity: 0.95;
+        }
+
+        .hero-socials {
+            position: static;
+            /* Remove absolute positioning */
+            transform: none;
+            margin-top: var(--spacing-sm);
+            justify-content: center;
+            width: 100%;
+            gap: var(--spacing-md);
+        }
+
+        .hero-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.2);
+            /* More visible on mobile */
+        }
+
+        .product-card {
+            flex-direction: row;
+            /* Keep row unless very narrow */
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-sm);
+        }
+
+        .product-card img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .product-info {
+            margin-left: var(--spacing-sm);
+            margin-right: 4px;
+        }
+
+        .product-info h3 {
+            font-size: var(--font-size-base);
+            line-height: 1.2;
+        }
+
+        .product-info p {
+            font-size: 0.8rem;
+        }
+
+        .countContainer {
+            position: absolute;
+            bottom: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .countContainer button {
+            width: 28px;
+            height: 28px;
+            font-size: 1rem;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+        }
+    }

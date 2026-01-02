@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="logo-loader">
+      <img src="./img/hero.jpeg" alt="Logo">
+      <div class="pulse"></div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-logo">
+      <img src="./img/hero.jpeg" alt="Khan Reklam Logo" />
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">Khan Reklam</h1>
+      <p class="hero-subtitle">Premium Çap və Reklam Xidmətləri</p>
+    </div>
+    <div class="hero-socials">
+      <a href="https://www.instagram.com/khan_reklam" class="hero-icon" aria-label="Instagram"><i
+          class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/994501234567" class="hero-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@khan_reklam" class="hero-icon" aria-label="TikTok"><i
+          class="fab fa-tiktok"></i></a>
+      <a href="https://www.google.com/maps" class="hero-icon" aria-label="Location"><i
+          class="fas fa-map-marker-alt"></i></a>
+    </div>
+  </section>
+
+  <!-- Category Navbar -->
+  <div id="category-navbar"></div>
+
+  <!-- Product Container -->
+  <div id="product-container"></div>
+
+  <!-- WhatsApp Floating Circular Button -->
+  <button id="open-order-popup" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+
+  <!-- WhatsApp Order Popup -->
+  <div id="order-popup" class="order-popup">
+    <div class="order-content">
+      <div class="popup-header">
+        <h2>Sizin Sifarişiniz</h2>
+        <span class="close-popup">&times;</span>
+      </div>
+
+      <div id="order-items" class="order-items"></div>
+
+      <div class="order-footer">
+        <div id="order-total" class="order-total">Ümumi məbləğ: 0.00 AZN</div>
+        <button id="send-whatsapp" class="popup-send-btn">WhatsApp ilə Göndər</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <div class="lightbox-close">&times;</div>
+    <img src="" alt="Full View">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
