@@ -92,21 +92,9 @@ README.md
 
 ---
 
-## 🤝 Contributing
-
-Contributions welcome — please open issues or pull requests. See `CONTRIBUTING.md` for the contribution guide and `CODE_OF_CONDUCT.md` for expected behavior.
-
----
-
-## 📜 License
-
-This project is available under the **MIT License**. See `LICENSE` for details.
-
----
-
 ## ✉️ Author / Contact
 
-Author: **[YOUR NAME]**  
+Author: **Khan Reklam**  
 Contact: **[YOUR EMAIL or SOCIAL]**
 
 ---
