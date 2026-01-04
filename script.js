@@ -1,5 +1,5 @@
 // =================== CONFIG ===================
-const BASE_URL = 'https://test-38fd9-default-rtdb.asia-southeast1.firebasedatabase.app';
+const BASE_URL = 'https://khan-d0df6-default-rtdb.asia-southeast1.firebasedatabase.app';
 const WHATSAPP_PHONE = "515935433";
 
 // =================== GLOBAL STATE ===================
