@@ -1,6 +1,7 @@
 # Khan Reklam — Shop
 
 A minimal single-page storefront for *Khan Reklam* that loads categories and products from a Firebase Realtime Database and lets customers build an order and send it via WhatsApp.
+
 ---
 
 ## 🚀 Features
